@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <math.h>
 
+// subject for optimization
+// further additions: struct
+// population or sample 
+
 void sort(float *data, int num);
 void print(float *data, int num);
 float mean(float *data, int num);
