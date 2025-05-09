@@ -26,7 +26,7 @@ int main()
         return 1;
     }
 
-    float *datasets = calloc(num, sizeof(float)); // dynamic memory allocation (malloc = random values) 
+    float *datasets = calloc(num, sizeof(float)); // dynamic memory allocation (calloc = zero-based allocation) 
 
     if (!datasets) {
         fprintf(stderr, "Memory Allocation Failed.\n");
@@ -57,7 +57,7 @@ int main()
 void sort(float *data, int num)
 {
     for (int i = 1; i < num; i++) {
-        float curr = data[j];
+        float curr = data[i];
         int j = i - 1;
 
         while (j >= 0 && *(data + j) > curr) {
@@ -119,6 +119,7 @@ float mode(float *data, int num)
 
     if (max_count == 1) {
         printf("No mode.\n");
+        return NAN;
     }
 
     return max_val;
