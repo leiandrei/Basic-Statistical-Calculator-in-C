@@ -126,7 +126,7 @@ float mode(float *data, int num)
         float count = 0;
         for (int j = 0; j < num; j++) {
             if (data[i] == data[j]) {
-                ++count;
+                count++;
             }
         }
         if (count > max_count) 
