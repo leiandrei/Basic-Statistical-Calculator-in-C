@@ -57,14 +57,14 @@ int main()
 void sort(float *data, int num)
 {
     for (int i = 1; i < num; i++) {
-        float curr = *(data + i);
+        float curr = data[j];
         int j = i - 1;
 
         while (j >= 0 && *(data + j) > curr) {
-            *(data + j + 1) = *(data + j);
+            data[j + 1] = data[j];
             j--;
         }
-        *(data + j + 1) = curr;
+        data[j + 1] = curr;
     }
 }
 
@@ -82,7 +82,7 @@ float mean(float *data, int num)
     float average = 0;
     for (int i = 0; i < num; i++)
     {
-        average += *(data + i) / num;
+        average += data[i] / num;
     }
     return (float)average;
 }
@@ -106,13 +106,13 @@ float mode(float *data, int num)
     {
         float count = 0;
         for (int j = 0; j < num; j++) {
-            if (*(data + i) == *(data + j)) {
+            if (data[i] == data[j]) {
                 ++count;
             }
         }
         if (count > max_count) {
             max_count = count;
-            max_val = *(data + i);
+            max_val = data[i];
         }
 
     }
@@ -130,7 +130,7 @@ float std_dev(float *data, int num)
     float accumulated_mean = mean(data, num);
 
     for (int i = 0; i < num; i++) {
-        variance += pow(*(data + i) - accumulated_mean, 2);
+        variance += pow(data[i] - accumulated_mean, 2);
     }
 
     variance /= (num - 1);
