@@ -6,6 +6,7 @@
 // further additions: struct
 // population or sample 
 
+float *allocated_datasets(int num);
 void sort(float *data, int num);
 void print(float *data, int num);
 float mean(float *data, int num);
@@ -26,10 +27,9 @@ int main()
         return 1;
     }
 
-    float *datasets = calloc(num, sizeof(float)); // dynamic memory allocation (calloc = zero-based allocation) 
+   float *datasets = allocated_datasets(num); // dynamic memory allocation (calloc = zero-based allocation) 
 
     if (!datasets) {
-        fprintf(stderr, "Memory Allocation Failed.\n");
         return 1;
     }
 
@@ -43,15 +43,21 @@ int main()
     sort(datasets, num);
     print(datasets, num);
 
-    printf("\n=== Statistical Results ===\n");
-    printf("Mean: %.2f\n", mean(datasets, num));
-    printf("Median: %.2f\n", median(datasets, num));
-    printf("Mode: %.2f\n", mode(datasets, num));
-    printf("Standard Deviation: %.2f\n", std_dev(datasets, num));
-
-
     free(datasets); // frees the used memory
     return 0;
+}
+
+float *allocated_datasets(int num)
+{
+    float *datasets = calloc(num, sizeof(float));
+    
+    if (!datasets) 
+    {
+        perror("Memory Allocation Failed!");
+        return NULL;
+    }
+    
+    return datasets;
 }
 
 void sort(float *data, int num)
@@ -71,10 +77,22 @@ void sort(float *data, int num)
 void print(float *data, int num)
 {
     printf("\nThe Following Datasets (Sorted):\n");
+    
     for (int i = 0; i < num; i++) {
         printf("%.2f ", *(data +i));
     }
+    
     printf("\n");
+
+    printf("\n=== Statistical Results ===\n");
+    
+    printf("Mean: %.2f\n", mean(data, num));
+    
+    printf("Median: %.2f\n", median(data, num));
+    
+    printf("Mode: %.2f\n", mode(data, num));
+    
+    printf("Standard Deviation: %.2f\n", std_dev(data, num));
 }
 
 float mean(float *data, int num)
@@ -90,7 +108,8 @@ float mean(float *data, int num)
 float median(float *data, int num)
 {
 
-    if (num % 2 == 0) {
+    if (num % 2 == 0) 
+    {
         float mid1 = data[(num / 2) - 1];
         float mid2 = data[num / 2];
         return (mid1 + mid2) / 2.0;
@@ -110,15 +129,16 @@ float mode(float *data, int num)
                 ++count;
             }
         }
-        if (count > max_count) {
+        if (count > max_count) 
+        {
             max_count = count;
             max_val = data[i];
         }
 
     }
 
-    if (max_count == 1) {
-        printf("No mode.\n");
+    if (max_count == 1) 
+    {
         return NAN;
     }
 
