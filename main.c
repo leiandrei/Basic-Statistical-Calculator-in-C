@@ -16,7 +16,7 @@ float median(float *data, int num);
 float mode(float *data, int num);
 float std_dev(float *data, int num);
 
-int main()
+int main(int argc, char **argv)
 {
     int num;
 
