@@ -7,7 +7,9 @@
 // population or sample 
 
 float *allocated_datasets(int num);
-void sort(float *data, int num);
+void swap(float *a, float *b);
+int partition(float *data, int low, int high);
+void quick_sort(float *data, int low, int high); // updated to quick sort algorithm. 
 void print(float *data, int num);
 float mean(float *data, int num);
 float median(float *data, int num);
@@ -40,7 +42,7 @@ int main()
         scanf("%f", &datasets[i]);
     }
 
-    sort(datasets, num);
+    quick_sort(datasets, 0, num - 1);
     print(datasets, num);
 
     free(datasets); // frees the used memory
@@ -60,17 +62,35 @@ float *allocated_datasets(int num)
     return datasets;
 }
 
-void sort(float *data, int num)
+void swap(float *a, float *b)
 {
-    for (int i = 1; i < num; i++) {
-        float curr = data[i];
-        int j = i - 1;
+    float temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
-        while (j >= 0 && *(data + j) > curr) {
-            data[j + 1] = data[j];
-            j--;
+int partition(float *data, int low, int high)
+{
+    float pivot = data[high];
+    int i = low - 1;
+
+    for (int j = low; j <= high - 1; j++) 
+    {
+        if (data[j] <= pivot) {
+            i++;
+            swap(&data[i], &data[j]);
         }
-        data[j + 1] = curr;
+    }
+    swap(&data[i + 1], &data[high]);
+    return i + 1;
+}
+
+void quick_sort(float *data, int low, int high)
+{
+    if (low < high) {
+        int pivot_index = partition(data, low, high);
+        quick_sort(data, low, pivot_index - 1);
+        quick_sort(data, pivot_index + 1, high);
     }
 }
 
