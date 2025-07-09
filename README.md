@@ -1,2 +1,8 @@
 # simple-dataset-calc
-Statistical Calculator written in C, using dynamically allocated and manually managed memory, with functions such as (mean, median, mode, and stddev), and sorted using quick sort.
+
+## 🌐 Technologies Used
+* C Language
+
+A basic statistics calculator in C with concepts (mean, median, mode, and standard dev) and utilizes Quick Sort as a sorting algorithm.
+
+
