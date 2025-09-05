@@ -13,7 +13,7 @@ This is a basic **C-based Language** Statistical Calculator that performs basic 
 
 ## Features:
 
-- Users can input certain dataset values
-- Uses an efficient sorting algorithm (**Quick Sort**)
-- Performs accurate basic statistical operations
-- Statistical funtcions implemented from scratch
+- ✅ Users can input certain dataset values
+- ✅ Uses an efficient sorting algorithm (**Quick Sort**)
+- ✅ Performs accurate basic statistical operations
+- ✅ Statistical funtcions implemented from scratch
