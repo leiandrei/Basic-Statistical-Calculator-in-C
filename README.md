@@ -18,6 +18,12 @@ This is a basic **C-based Language** Statistical Calculator that performs basic 
 - ✅ Performs accurate basic statistical operations
 - ✅ Statistical funtcions implemented from scratch
 
+## Future Improvements:
+
+- 📌 Visual Plotting using GNUPlot.
+- 📌 Improvements using Dynamic Structs.
+- 📌 Option for Datasets: Population or Sample.
+
 ## Example Run:
 ```text
 Enter the number of the datasets: 5
